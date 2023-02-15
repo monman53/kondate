@@ -8,6 +8,7 @@ db = SQLAlchemy()
 
 # create the app
 app = Flask(__name__)
+app.config.from_envvar('YOURAPPLICATION_SETTINGS')
 
 # configure the SQLite database, relative to the app instance folder
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
@@ -28,7 +29,7 @@ with app.app_context():
 def root():
   recipes = db.session.execute(db.select(Recipe)).scalars()
   print(recipes)
-  return render_template("./index.html", recipes=recipes)
+  return render_template("index.html", recipes=recipes)
 
 @app.route("/recipes/create", methods=["POST"])
 def recipe_create():

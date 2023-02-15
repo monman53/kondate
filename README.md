@@ -24,6 +24,7 @@ echo Starting Kondate web app.
 cd /path/to/app # Edit here
 source venv/bin/activate
 gunicorn -w 2 -b 127.0.0.1:8080 main:app
+#gunicorn --bind unix:app.sock -m 007 main:app
 ```
 
 ### `systemd` configure example
