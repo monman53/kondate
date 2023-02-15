@@ -30,7 +30,7 @@ gunicorn -w 2 -b 127.0.0.1:8080 main:app
 
 ```
 [Unit]
-Description=Gunicorn Flask Application
+Description=Kondate Web Application
 After=network.target
 After=systemd-user-sessions.service
 After=network-online.target
@@ -38,7 +38,7 @@ After=network-online.target
 [Service]
 User=root
 Type=simple
-ExecStart=/var/www/flask/hello-world/start.sh
+ExecStart=/path/to/start.sh
 TimeoutSec=30
 Restart=on-failure
 RestartSec=15
@@ -47,4 +47,11 @@ StartLimitBurst=10
 
 [Install]
 WantedBy=multi-user.target
+```
+
+```
+sudo cp kondate.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable kondate.service
+sudo systemctl start kondate.service
 ```
