@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<h1>Kondate</h1>
+
+<ul>
+  {% for recipe in recipes %}
+  <li>{{recipe.name}}</li>
+  {% endfor %}
+</ul>
+
+<form action="/recipes/create" method="post">
+  <input type="txt" name="name" id="name" />
+  <input type="submit" value="追加" />
+</form>

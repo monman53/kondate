@@ -9,7 +9,7 @@ Simple Washoku recipes manager.
 pip install -r requirements.txt
 
 # Run server (development)
-flask --app main run
+flask --app main --debug run
 
 # Run server
 gunicorn 'main:app'
