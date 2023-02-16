@@ -8,8 +8,6 @@ db = SQLAlchemy()
 
 # create the app
 app = Flask(__name__)
-app.config.from_prefixed_env()
-# app.config.from_envvar('YOURAPPLICATION_SETTINGS')
 
 # configure the SQLite database, relative to the app instance folder
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
@@ -38,4 +36,3 @@ def recipe_create():
   db.session.add(recipe)
   db.session.commit()
   return redirect(url_for("root"))
-  # return redirect()
