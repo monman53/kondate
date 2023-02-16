@@ -36,3 +36,10 @@ def recipe_create():
   db.session.add(recipe)
   db.session.commit()
   return redirect(url_for("root"))
+
+@app.route("/recipes/delete", methods=["POST"])
+def recipe_delete():
+  recipe = db.session.execute(db.select(Recipe).filter_by(id=request.form["key"])).scalar_one()
+  db.session.delete(recipe)
+  db.session.commit()
+  return redirect(url_for("root"))

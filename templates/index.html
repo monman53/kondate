@@ -6,12 +6,18 @@
 
 <ul>
   {% for recipe in recipes %}
-  <li>{{recipe.name}}</li>
+  <li>
+    {{recipe.name}}
+    <form action="./recipes/delete" method="post">
+      <input type="hidden" name="key" value="{{recipe.id}}" />
+      <input type="submit" value="削除" />
+    </form>
+  </li>
   {% endfor %}
 </ul>
 
 <form action="./recipes/create" method="post">
-  <input type="txt" name="name" id="name" />
+  <input type="txt" name="name" />
   <input type="submit" value="追加" />
 </form>
 
