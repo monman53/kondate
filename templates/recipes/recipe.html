@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<h1><a href="../">Kondate</a>:「{{recipe.name}}」のレシピ</h1>
+
+<hr />
+
+<h2>調味料</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>分量（小さじ）</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>醤油</td>
+      <td>{{recipe.shoyu}}</td>
+    </tr>
+    <tr>
+      <td>砂糖</td>
+      <td>{{recipe.sato}}</td>
+    </tr>
+    <tr>
+      <td>みりん</td>
+      <td>{{recipe.mirin}}</td>
+    </tr>
+    <tr>
+      <td>塩</td>
+      <td>{{recipe.shio}}</td>
+    </tr>
+    <tr>
+      <td>酢</td>
+      <td>{{recipe.su}}</td>
+    </tr>
+    <tr>
+      <td>さけ</td>
+      <td>{{recipe.sake}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>メモ</h2>
+<p>{{recipe.memo}}</p>
+
+<h2>その他</h2>
+<p>作成日: {{recipe.created_date}}</p>
+<p>id: {{recipe.id}}</p>
+<form action="./delete" method="post">
+  <input type="hidden" name="id" value="{{recipe.id}}" />
+  <input type="submit" value="レシピを削除" />
+</form>
+
+<hr />
+
+<a href="../">Home</a>

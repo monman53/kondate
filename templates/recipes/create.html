@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<h1>Kondate: Create a New Recipe</h1>
+
+<hr />
+
+<form action="./create" method="post">
+  料理名: <input name="name" type="txt" /><br />
+
+  醤油（小さじ）:
+  <input name="shoyu" type="number" min="0" max="36" value="0" /><br />
+
+  砂糖（小さじ）:
+  <input name="sato" type="number" min="0" max="36" value="0" /><br />
+
+  みりん（小さじ）:
+  <input name="mirin" type="number" min="0" max="36" value="0" /><br />
+
+  塩（小さじ）:
+  <input name="shio" type="number" min="0" max="36" value="0" /><br />
+
+  酢（小さじ）:
+  <input name="su" type="number" min="0" max="36" value="0" /><br />
+
+  酒（小さじ）:
+  <input name="sake" type="number" min="0" max="36" value="0" /><br />
+
+  小さじ 3 = 大さじ 1<br />
+
+  メモ:<br />
+  <textarea name="memo" rows="5"></textarea><br />
+
+  <input type="submit" value="追加" />
+</form>
+
+<hr />
+
+<a href="../">Home</a>

@@ -3,22 +3,18 @@
 <meta name="viewport" content="width=device-width" />
 
 <h1>Kondate</h1>
+<hr />
 
 <ul>
   {% for recipe in recipes %}
   <li>
-    {{recipe.name}}
-    <form action="./recipes/delete" method="post">
-      <input type="hidden" name="key" value="{{recipe.id}}" />
-      <input type="submit" value="削除" />
-    </form>
+    <a href="./recipes/{{recipe.id}}">{{recipe.name}}</a>
   </li>
   {% endfor %}
 </ul>
 
-<form action="./recipes/create" method="post">
-  <input type="txt" name="name" />
-  <input type="submit" value="追加" />
-</form>
+<a href="./recipes/create">Create New Recipe</a>
 
-<a href="/">Home</a>
+<hr />
+
+<a href="./">Home</a>
