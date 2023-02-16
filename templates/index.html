@@ -21,6 +21,7 @@
       {% for chomiryo in chomiryo_list %}
       <th>{{chomiryo["display"]}}</th>
       {% endfor %}
+      <th>参考レシピ</th>
     </tr>
   </thead>
   <tbody>
@@ -32,12 +33,11 @@
       {% for chomiryo in chomiryo_list %} {% set key = chomiryo["key"] %}
       <td>{{recipe[key] if recipe[key] > 0}}</td>
       {% endfor %}
-      <!-- <td>{{recipe.sato if recipe.sato > 0}}</td>
-      <td>{{recipe.shio if recipe.shio > 0}}</td>
-      <td>{{recipe.shoyu if recipe.shoyu > 0}}</td>
-      <td>{{recipe.su if recipe.su > 0}}</td>
-      <td>{{recipe.sake if recipe.sake > 0}}</td>
-      <td>{{recipe.mirin if recipe.mirin > 0}}</td> -->
+      <td>
+        {% if recipe.reference_url %}
+        <a href="{{recipe.reference_url}}">Link</a>
+        {% endif %}
+      </td>
     </tr>
     {% endfor %}
   </tbody>

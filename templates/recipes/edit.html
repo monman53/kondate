@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<title>レシピの追加: Kondate</title>
+<title>レシピの編集: Kondate</title>
 
-<h1><a href="../">Kondate</a>: 新しいレシピを追加</h1>
+<h1><a href="../">Kondate</a>: 「{{recipe.name}}」のレシピを編集</h1>
 
 <hr />
 
-<form action="./create" method="post">
-  料理名: <input name="name" type="txt" /><br />
+<form action="./{{recipe.id}}" method="post">
+  料理名: <input name="name" type="txt" value="{{recipe.name}}" /><br />
 
   <table>
     <tbody>
@@ -21,7 +21,7 @@
             type="number"
             min="0"
             max="36"
-            value="0"
+            value="{{recipe[chomiryo['key']]}}"
           />
         </td>
       </tr>
@@ -32,12 +32,16 @@
   小さじ 3 = 大さじ 1<br />
 
   メモ:<br />
-  <textarea name="memo" rows="5"></textarea><br />
+  <textarea name="memo" rows="5" value="{{recipe.memo}}"></textarea><br />
 
   参考 URL:
-  <input name="reference_url" type="txt" /><br />
+  <input
+    name="reference_url"
+    type="txt"
+    value="{{recipe.reference_url}}"
+  /><br />
 
-  <input type="submit" value="追加" />
+  <input type="submit" value="更新" />
 </form>
 
 <hr />

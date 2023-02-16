@@ -38,15 +38,19 @@
 {% if recipe.memo %}
 <h2>メモ</h2>
 <p>{{recipe.memo}}</p>
+{% endif %} {% if recipe.reference_url %}
+<h2>参考 URL</h2>
+<a href="{{recipe.reference_url}}">{{recipe.reference_url}}</a>
 {% endif %}
 
 <h2>その他</h2>
-<p>作成日: {{recipe.created_date}}</p>
-<p>id: {{recipe.id}}</p>
+<a href="./edit/{{recipe.id}}">編集</a>
 <form action="./delete" method="post">
   <input type="hidden" name="id" value="{{recipe.id}}" />
   <input type="submit" value="レシピを削除" />
 </form>
+<p>作成日: {{recipe.created_date}}</p>
+<p>id: {{recipe.id}}</p>
 
 <hr />
 

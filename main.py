@@ -29,6 +29,7 @@ class Recipe(db.Model):
 
   name = db.Column(db.String, nullable=False)
   image_path = db.Column(db.String)
+  reference_url = db.Column(db.String)
   memo = db.Column(db.String)
   created_date = db.Column(db.DateTime, default=datetime.datetime.now)
 
@@ -64,6 +65,7 @@ def recipe_create():
     recipe = Recipe(
       name=request.form["name"],
       memo=request.form["memo"],
+      reference_url=request.form["reference_url"],
       **chomiryo_dict,
     )
     db.session.add(recipe)
@@ -71,6 +73,25 @@ def recipe_create():
     return redirect(url_for("root"))
   
   return render_template('recipes/create.html', chomiryo_list=chomiryo_list)
+
+@app.route("/recipes/edit/<int:recipe_id>", methods=["GET", "POST"])
+def recipe_edit(recipe_id):
+  record = db.select(Recipe).filter_by(id=recipe_id)
+  recipe = db.session.execute(record).scalar_one()
+
+  if request.method == "POST":
+
+    recipe.name = request.form["name"]
+    recipe.memo = request.form["memo"]
+    recipe.reference_url=request.form["reference_url"]
+    for chomiryo in chomiryo_list:
+      key = chomiryo["key"]
+      setattr(recipe, key, request.form[key])
+
+    db.session.commit()
+    return redirect(url_for("root"))
+  
+  return render_template('recipes/edit.html', recipe=recipe, chomiryo_list=chomiryo_list)
 
 @app.route("/recipes/delete", methods=["POST"])
 def recipe_delete():
