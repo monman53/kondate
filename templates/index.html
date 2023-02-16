@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
+<title>Top: Kondate</title>
 
 <style>
   table,
@@ -17,12 +18,9 @@
   <thead>
     <tr>
       <th>料理名</th>
-      <th>砂糖</th>
-      <th>塩</th>
-      <th>醤油</th>
-      <th>酢</th>
-      <th>さけ</th>
-      <th>みりん</th>
+      {% for chomiryo in chomiryo_list %}
+      <th>{{chomiryo["display"]}}</th>
+      {% endfor %}
     </tr>
   </thead>
   <tbody>
@@ -31,12 +29,15 @@
       <td>
         <a href="./recipes/{{recipe.id}}">{{recipe.name}}</a>
       </td>
-      <td>{{recipe.sato if recipe.sato > 0}}</td>
+      {% for chomiryo in chomiryo_list %} {% set key = chomiryo["key"] %}
+      <td>{{recipe[key] if recipe[key] > 0}}</td>
+      {% endfor %}
+      <!-- <td>{{recipe.sato if recipe.sato > 0}}</td>
       <td>{{recipe.shio if recipe.shio > 0}}</td>
       <td>{{recipe.shoyu if recipe.shoyu > 0}}</td>
       <td>{{recipe.su if recipe.su > 0}}</td>
       <td>{{recipe.sake if recipe.sake > 0}}</td>
-      <td>{{recipe.mirin if recipe.mirin > 0}}</td>
+      <td>{{recipe.mirin if recipe.mirin > 0}}</td> -->
     </tr>
     {% endfor %}
   </tbody>

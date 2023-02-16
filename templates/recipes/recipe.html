@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
+<title>「{{recipe.name}}」のレシピ: Kondate</title>
+
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid;
+  }
+</style>
 
 <h1><a href="../">Kondate</a>:「{{recipe.name}}」のレシピ</h1>
 
@@ -17,37 +26,12 @@
   </thead>
 
   <tbody>
-    {% if recipe.shoyu > 0 %}
+    {% for chomiryo in chomiryo_list %} {% if recipe[chomiryo["key"]] > 0 %}
     <tr>
-      <td>醤油</td>
-      <td>{{recipe.shoyu}}</td>
+      <td>{{chomiryo["display"]}}</td>
+      <td>{{recipe[chomiryo["key"]]}}</td>
     </tr>
-    {% endif %} {% if recipe.sato > 0 %}
-    <tr>
-      <td>砂糖</td>
-      <td>{{recipe.sato}}</td>
-    </tr>
-    {% endif %} {% if recipe.mirin > 0 %}
-    <tr>
-      <td>みりん</td>
-      <td>{{recipe.mirin}}</td>
-    </tr>
-    {% endif %} {% if recipe.shio > 0 %}
-    <tr>
-      <td>塩</td>
-      <td>{{recipe.shio}}</td>
-    </tr>
-    {% endif %} {% if recipe.su > 0 %}
-    <tr>
-      <td>酢</td>
-      <td>{{recipe.su}}</td>
-    </tr>
-    {% endif %} {% if recipe.sake > 0 %}
-    <tr>
-      <td>さけ</td>
-      <td>{{recipe.sake}}</td>
-    </tr>
-    {% endif %}
+    {% endif %} {% endfor %}
   </tbody>
 </table>
 

@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
+<title>レシピの追加: Kondate</title>
 
-<h1>Kondate: Create a New Recipe</h1>
+<h1><a href="../">Kondate</a>: Create a New Recipe</h1>
 
 <hr />
 
 <form action="./create" method="post">
   料理名: <input name="name" type="txt" /><br />
 
-  醤油（小さじ）:
-  <input name="shoyu" type="number" min="0" max="36" value="0" /><br />
-
-  砂糖（小さじ）:
-  <input name="sato" type="number" min="0" max="36" value="0" /><br />
-
-  みりん（小さじ）:
-  <input name="mirin" type="number" min="0" max="36" value="0" /><br />
-
-  塩（小さじ）:
-  <input name="shio" type="number" min="0" max="36" value="0" /><br />
-
-  酢（小さじ）:
-  <input name="su" type="number" min="0" max="36" value="0" /><br />
-
-  酒（小さじ）:
-  <input name="sake" type="number" min="0" max="36" value="0" /><br />
+  <table>
+    <tbody>
+      {% for chomiryo in chomiryo_list %}
+      <tr>
+        <td>{{chomiryo["display"]}}:</td>
+        <td>
+          <input
+            name="{{chomiryo['key']}}"
+            type="number"
+            min="0"
+            max="36"
+            value="0"
+          />
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
   小さじ 3 = 大さじ 1<br />
 
