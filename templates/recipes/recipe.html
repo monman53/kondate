@@ -17,35 +17,44 @@
   </thead>
 
   <tbody>
+    {% if recipe.shoyu > 0 %}
     <tr>
       <td>醤油</td>
       <td>{{recipe.shoyu}}</td>
     </tr>
+    {% endif %} {% if recipe.sato > 0 %}
     <tr>
       <td>砂糖</td>
       <td>{{recipe.sato}}</td>
     </tr>
+    {% endif %} {% if recipe.mirin > 0 %}
     <tr>
       <td>みりん</td>
       <td>{{recipe.mirin}}</td>
     </tr>
+    {% endif %} {% if recipe.shio > 0 %}
     <tr>
       <td>塩</td>
       <td>{{recipe.shio}}</td>
     </tr>
+    {% endif %} {% if recipe.su > 0 %}
     <tr>
       <td>酢</td>
       <td>{{recipe.su}}</td>
     </tr>
+    {% endif %} {% if recipe.sake > 0 %}
     <tr>
       <td>さけ</td>
       <td>{{recipe.sake}}</td>
     </tr>
+    {% endif %}
   </tbody>
 </table>
 
+{% if recipe.memo %}
 <h2>メモ</h2>
 <p>{{recipe.memo}}</p>
+{% endif %}
 
 <h2>その他</h2>
 <p>作成日: {{recipe.created_date}}</p>

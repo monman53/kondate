@@ -2,18 +2,48 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid;
+  }
+</style>
+
 <h1>Kondate</h1>
 <hr />
 
-<ul>
-  {% for recipe in recipes %}
-  <li>
-    <a href="./recipes/{{recipe.id}}">{{recipe.name}}</a>
-  </li>
-  {% endfor %}
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>料理名</th>
+      <th>砂糖</th>
+      <th>塩</th>
+      <th>醤油</th>
+      <th>酢</th>
+      <th>さけ</th>
+      <th>みりん</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for recipe in recipes %}
+    <tr>
+      <td>
+        <a href="./recipes/{{recipe.id}}">{{recipe.name}}</a>
+      </td>
+      <td>{{recipe.sato if recipe.sato > 0}}</td>
+      <td>{{recipe.shio if recipe.shio > 0}}</td>
+      <td>{{recipe.shoyu if recipe.shoyu > 0}}</td>
+      <td>{{recipe.su if recipe.su > 0}}</td>
+      <td>{{recipe.sake if recipe.sake > 0}}</td>
+      <td>{{recipe.mirin if recipe.mirin > 0}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+（単位は小さじ）<br />
 
-<a href="./recipes/create">Create New Recipe</a>
+<a href="./recipes/create">レシピを追加</a>
 
 <hr />
 
